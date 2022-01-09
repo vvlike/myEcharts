@@ -1,0 +1,215 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-01-07 16:22:21
+ * @LastEditTime: 2022-01-07 17:14:00
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \01day\01.尝试体验.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echarts的初体验</title>
+
+    <style>
+        div {
+            margin: 10px auto;
+            width: 500px;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 步骤1：下载并且引入echarts.js文件 -->
+    <!-- 步骤2：准备一个具备大小的dom容器 -->
+    <!-- 步骤3：初始化echarts实例对象 -->
+    <!-- 步骤4：指定配置项和参数 -->
+    <!-- 步骤5：将配置项设置给echarts实例对象 -->
+    <!-- <script src="/js/echarts.min.js"></script> -->
+    <div class="box"></div>
+
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <!-- 条形图 -->
+    <script>
+        var myCharts = echarts.init(document.querySelector('.box'))
+        console.log(myCharts);
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myCharts.setOption(option);
+    </script>
+    <!-- 饼形图 -->
+    <script>
+        var myChart1 = echarts.init(document.querySelector('.box1'))
+        var option1 = {
+            title: {
+                text: 'Referer of a Website',
+                subtext: 'Fake Data',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [{
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [{
+                    value: 1048,
+                    name: 'Search Engine'
+                }, {
+                    value: 735,
+                    name: 'Direct'
+                }, {
+                    value: 580,
+                    name: 'Email'
+                }, {
+                    value: 484,
+                    name: 'Union Ads'
+                }, {
+                    value: 300,
+                    name: 'Video Ads'
+                }],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };
+
+        myChart1.setOption(option1)
+    </script>
+    <!-- 线形图 -->
+    <script>
+        var myChart2 = echarts.init(document.querySelector('.box2'))
+
+        var option2 = {
+            title: {
+                text: 'Temperature Change in the Coming Week'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {},
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {
+                        readOnly: false
+                    },
+                    magicType: {
+                        type: ['line', 'bar']
+                    },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value} °C'
+                }
+            },
+            series: [{
+                name: 'Highest',
+                type: 'line',
+                data: [10, 11, 13, 11, 12, 12, 9],
+                markPoint: {
+                    data: [{
+                        type: 'max',
+                        name: 'Max'
+                    }, {
+                        type: 'min',
+                        name: 'Min'
+                    }]
+                },
+                markLine: {
+                    data: [{
+                        type: 'average',
+                        name: 'Avg'
+                    }]
+                }
+            }, {
+                name: 'Lowest',
+                type: 'line',
+                data: [1, -2, 2, 5, 3, 2, 0],
+                markPoint: {
+                    data: [{
+                        name: '周最低',
+                        value: -2,
+                        xAxis: 1,
+                        yAxis: -1.5
+                    }]
+                },
+                markLine: {
+                    data: [{
+                            type: 'average',
+                            name: 'Avg'
+                        },
+                        [{
+                            symbol: 'none',
+                            x: '90%',
+                            yAxis: 'max'
+                        }, {
+                            symbol: 'circle',
+                            label: {
+                                position: 'start',
+                                formatter: 'Max'
+                            },
+                            type: 'max',
+                            name: '最高点'
+                        }]
+                    ]
+                }
+            }]
+        };
+
+        myChart2.setOption(option2)
+    </script>
+</body>
+
+</html>

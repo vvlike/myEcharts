@@ -1,0 +1,81 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-01-07 17:21:16
+ * @LastEditTime: 2022-01-07 18:06:52
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \01day\02.配置项.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置项 VV</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
+</head>
+
+<body>
+    <div class="box" style="width: 800px;height: 600px; background-color: pink; margin: 10px auto;"></div>
+    <script>
+        var myChart = echarts.init(document.querySelector('.box'))
+
+        var option = {
+            title: {
+                text: '配置学习 --- VV'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['Email', 'Union Ads', 'Video Ads', 'Direct']
+            },
+            grid: {
+                left: '0%',
+                right: '3%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['星期一', '星期二', '星期三', '星期四', '星期五', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: 'Email',
+                type: 'line',
+                stack: 'Total1',
+                data: [120, 132, 101, 134, 90, 230, 210]
+            }, {
+                name: 'Union Ads',
+                type: 'line',
+                stack: 'Total2',
+                data: [220, 182, 191, 234, 290, 330, 310]
+            }, {
+                name: 'Video Ads',
+                type: 'line',
+                stack: 'Total3',
+                data: [150, 232, 201, 154, 190, 330, 410]
+            }, {
+                name: 'Direct',
+                type: 'line',
+                stack: 'Total4',
+                data: [320, 332, 301, 334, 390, 330, 320]
+            }]
+        };
+
+        myChart.setOption(option)
+    </script>
+</body>
+
+</html>
